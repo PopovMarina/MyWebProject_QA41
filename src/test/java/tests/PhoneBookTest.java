@@ -15,6 +15,7 @@ public class PhoneBookTest extends BaseTest {
         MainPage mainPage = new MainPage(getDriver());
         LoginPage loginPage = mainPage.openTopMenu(TopMenuItem.LOGIN.toString());
         loginPage.fillEmailField("myemail@mail.com").clickByRegistartionBUtton();
+
        // Thread.sleep(5000);
 
     }

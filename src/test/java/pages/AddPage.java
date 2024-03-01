@@ -36,6 +36,12 @@ public class AddPage extends  BasePage{
     public void fillFormAndSave(Contact contact){
         nameField.sendKeys(contact.getName());
         lastnameField.sendKeys(contact.getLastName());
+        /**
+         * Это условие проверяет длину телефонного номера контакта.
+         * Если длина находится в диапазоне от 10 до 15 символов,
+         * тогда номер телефона отправляется в соответствующее поле веб-формы.
+         * Если длина не соответствует ожидаемому диапазону, выбрасывается исключение IllegalArgumentException.
+         */
         if(contact.getPhone().length()>=10 && contact.getPhone().length()<=15){
             phoneField.sendKeys(contact.getPhone());
         }else{
@@ -45,6 +51,8 @@ public class AddPage extends  BasePage{
         addressField.sendKeys(contact.getAddress());
         descriptionField.sendKeys(contact.getDescription());
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        //  Этот код использует объект WebDriverWait для ожидания, пока кнопка "Save" на веб-странице не станет видимой.
+        //  Затем она сохраняется в переменную saveButton.
         WebElement saveButton = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.xpath("//b[contains(text(),'Save')]")));
         saveButton.click();
