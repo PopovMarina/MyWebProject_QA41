@@ -9,13 +9,13 @@ import pages.MainPage;
 
 public class PhoneBookTest extends BaseTest {
 
-    @Test
+    @Test(description = "The test checks the empty field warning declaration.")
     @Parameters("browser")
     public void phoneBookTest_001(String browser) throws InterruptedException {
         MainPage mainPage = new MainPage(getDriver());
         LoginPage loginPage = mainPage.openTopMenu(TopMenuItem.LOGIN.toString());
         loginPage.fillEmailField("myemail@mail.com").clickByRegistartionBUtton();
-        Thread.sleep(5000);
+       // Thread.sleep(5000);
 
     }
 }
