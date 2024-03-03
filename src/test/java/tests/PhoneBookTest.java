@@ -2,6 +2,7 @@ package tests;
 
 import config.BaseTest;
 import helpers.TopMenuItem;
+import org.openqa.selenium.Alert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.LoginPage;
@@ -14,7 +15,7 @@ public class PhoneBookTest extends BaseTest {
     public void phoneBookTest_001(String browser) throws InterruptedException {
         MainPage mainPage = new MainPage(getDriver());
         LoginPage loginPage = mainPage.openTopMenu(TopMenuItem.LOGIN.toString());
-        loginPage.fillEmailField("myemail@mail.com").clickByRegistartionBUtton();
+       loginPage.fillEmailField("myemail@mail.com").clickByRegistartionBUtton();
 
        // Thread.sleep(5000);
 
