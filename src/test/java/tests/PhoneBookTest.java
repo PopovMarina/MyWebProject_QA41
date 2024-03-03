@@ -3,6 +3,7 @@ package tests;
 import config.BaseTest;
 import helpers.TopMenuItem;
 import org.openqa.selenium.Alert;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.LoginPage;
@@ -12,12 +13,11 @@ public class PhoneBookTest extends BaseTest {
 
     @Test(description = "The test checks the empty field warning declaration.")
     @Parameters("browser")
-    public void phoneBookTest_001(String browser) throws InterruptedException {
+    public void phoneBookTest_001(@Optional("chrome") String browser) throws InterruptedException {
         MainPage mainPage = new MainPage(getDriver());
         LoginPage loginPage = mainPage.openTopMenu(TopMenuItem.LOGIN.toString());
        loginPage.fillEmailField("myemail@mail.com").clickByRegistartionBUtton();
 
-       // Thread.sleep(5000);
-//
+
     }
 }
