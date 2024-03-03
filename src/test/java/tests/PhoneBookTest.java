@@ -18,6 +18,6 @@ public class PhoneBookTest extends BaseTest {
        loginPage.fillEmailField("myemail@mail.com").clickByRegistartionBUtton();
 
        // Thread.sleep(5000);
-
+//
     }
 }
