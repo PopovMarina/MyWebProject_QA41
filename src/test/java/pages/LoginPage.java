@@ -38,10 +38,10 @@ public LoginPage fillEmailField(String email){ // Этот метод запол
     return  this;  // Затем метод возвращает объект LoginPage, что позволяет использовать этот метод в цепочке вызовов
 }
 
-public LoginPage clickByRegistartionBUtton(){ // Этот метод кликает по кнопке регистрации на веб-странице.
+public Alert clickByRegistartionBUtton(){ // Этот метод кликает по кнопке регистрации на веб-странице.
         // Он вызывает метод click() для registrationButton.
         registrationButton.click();
-        return this; // Затем он также возвращает объект LoginPage, чтобы этот метод также можно было использовать в цепочке вызовов.
+        return getAlertIfPresent(); // Затем он также возвращает объект LoginPage, чтобы этот метод также можно было использовать в цепочке вызовов.
 }
 
 public LoginPage fillPasswordField(String password){

@@ -2,22 +2,25 @@ package helpers;
 
 import java.util.Random;
 
-public class PasswordStringGenerator { public static String generateString() {
+public class PasswordStringGenerator {
+
+    public static String generateString() {
     StringBuilder stringBuilder = new StringBuilder();
 
-    // Генерируем 3 символа в верхнем регистре
+
+    // Генерируем символы в верхнем регистре
     for (int i = 0; i < 5; i++) {
         char upperCaseChar = (char) ('A' + Math.random() * ('Z' - 'A' + 1));
         stringBuilder.append(upperCaseChar);
     }
 
-    // Генерируем 3 символа в нижнем регистре
+    // Генерируем символы в нижнем регистре
     for (int i = 0; i < 5; i++) {
         char lowerCaseChar = (char) ('a' + Math.random() * ('z' - 'a' + 1));
         stringBuilder.append(lowerCaseChar);
     }
 
-    // Генерируем 3 цифры
+    // Генерируем цифры
     Random random = new Random();
     for (int i = 0; i < 5; i++) {
         int digit = random.nextInt(10);
@@ -37,7 +40,6 @@ public class PasswordStringGenerator { public static String generateString() {
 }
 
     public static void main(String[] args) {
-        String generatedString = generateString();
-        System.out.println("Generated String: " + generatedString);
+        System.out.println("RESULT: "+Math.random());
     }
 }
