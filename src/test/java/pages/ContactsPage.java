@@ -22,16 +22,23 @@ public class ContactsPage extends  BasePage{
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
     }
 
+    /**
+     * Этот метод предназначен для получения данных о контакте из списка контактов
+     * на веб-странице и сравнения полученных данных с данными переданным объектом Contact.
+     * @param contact
+     * @return boolean
+     */
     public boolean getDataFromContactList(Contact contact){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5)); // Создается объект класса WebDriverWait,
+        // который ожидает видимости элемента на странице в течение 5 секунд.
         WebElement nameInContact = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(
-                        By.xpath("//h2[contains(text(),'"+contact.getName().toString()+"')]")));
+                        By.xpath("//h2[contains(text(),'"+contact.getName().toString()+"')]"))); // Ожидается появление элемента с именем контакта, переданного в методе, используя XPath.
         nameInContact.click();
         WebElement editButton = driver
                 .findElement(By.xpath("//button[contains(text(),'Edit')]"));
         editButton.click();
-
+// находим элементы веб-страницы для каждого поля контакта (имя, фамилия, телефон, email, адрес и описание) и получаем их значения с помощью метода getAttribute("value").
         WebElement elementName = driver.findElement(By.xpath("//input[@placeholder='Name']"));
         String elementNameValue = elementName.getAttribute("value");
 
@@ -49,7 +56,7 @@ public class ContactsPage extends  BasePage{
 
         WebElement elementDescription = driver.findElement(By.xpath("//input[@placeholder='desc']"));
         String elementDescriptionValue = elementDescription.getAttribute("value");
-
+// Создается новый объект Contact, в который записываются полученные значения полей контакта.
         Contact listContact = new Contact();
         listContact.setName(elementNameValue);
         listContact.setLastName(elementLastNameValue);
@@ -57,8 +64,8 @@ public class ContactsPage extends  BasePage{
         listContact.setEmail(elementEmailValue);
         listContact.setAddress(elementAddressValue);
         listContact.setDescription(elementDescriptionValue);
-        boolean result = listContact.equals(contact);
-        return result;
+        boolean result = listContact.equals(contact); // Выполняется сравнение переданного объекта Contact с объектом listContact, созданным на основе данных, полученных со страницы.
+        return result; // Метод возвращает результат сравнения в виде логического значения true или false.
     }
 
 }

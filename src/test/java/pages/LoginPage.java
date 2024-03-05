@@ -59,13 +59,22 @@ public BasePage clickByLoginButton(){
         }
 
 }
-private Alert getAlertIfPresent(){
+
+    /**
+     * private Alert getAlertIfPresent() {: Это объявление метода getAlertIfPresent(),
+     * который возвращает объект класса Alert (если всплывающее окно присутствует) или null (если всплывающего окна нет).
+     * @return Alert / null
+     */
+    private Alert getAlertIfPresent(){
     try {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(5000));
-        return wait.until(ExpectedConditions.alertIsPresent());
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(5000)); // Создается новый объект класса WebDriverWait,
+        // который ожидает определенный период времени (в данном случае 5000 миллисекунд или 5 секунд).
+        // Он используется для ожидания появления всплывающего окна.
+        return wait.until(ExpectedConditions.alertIsPresent()); // ExpectedConditions.alertIsPresent() указывает,
+        // что мы ждем, пока всплывающее окно не появится. Как только оно появится, метод until() возвращает это всплывающее окно.
     }catch(TimeoutException e){
         System.out.println("Alert issue "+e);
-        return  null;
+        return  null; // Возвращается null, что означает, что всплывающего окна не было обнаружено.
     }
 
 }
