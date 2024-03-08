@@ -32,7 +32,33 @@ public class PhoneBookTest extends BaseTest {
         boolean isAlertHandled = AlertHandler.handleAlert(alert, expectedString);
         Assert.assertTrue(isAlertHandled);
 
-        // Test ngrok 2
     }
+    @Test
+    @Description("User already exist. Login and add contact.")
+    public void loginOfAnExistingUserAddContact() throws InterruptedException {
+        Allure.description("User already exist. Login and add contact.!");
+        MainPage mainPage = new MainPage(getDriver());
+        Allure.step("Step 1");
+        LoginPage lpage = mainPage.openTopMenu(TopMenuItem.LOGIN.toString());
+        Allure.step("Step 2");
+        lpage.fillEmailField(PropertiesReader.getProperty("existingUserEmail"))
+                .fillPasswordField(PropertiesReader.getProperty("existingUserPassword"))
+                .clickByLoginButton();
+        Allure.step("Step 3");
+        MainPage.openTopMenu(TopMenuItem.ADD.toString());
+        AddPage addPage = new AddPage(getDriver());
+        Contact newContact = new Contact(NameAndLastNameGenerator.generateName(),
+                NameAndLastNameGenerator.generateLastName(),
+                PhoneNumberGenerator.generatePhoneNumber(),
+                EmailGenerator.generateEmail(10,5,3),
+                AddressGenerator.generateAddress(),
+                "new description");
+        newContact.toString();
+        addPage.fillFormAndSave(newContact);
+        ContactsPage contactsPage = new ContactsPage(getDriver());
+        Assert.assertTrue(contactsPage.getDataFromContactList(newContact));
+        TakeScreen.takeScreenshot("screen");
+        Thread.sleep(3000);
 
+    }
 }
