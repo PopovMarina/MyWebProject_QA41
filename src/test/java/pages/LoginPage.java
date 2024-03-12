@@ -67,7 +67,7 @@ public BasePage clickByLoginButton(){
      */
     private Alert getAlertIfPresent(){
     try {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(5000)); // Создается новый объект класса WebDriverWait,
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(3000)); // Создается новый объект класса WebDriverWait,
         // который ожидает определенный период времени (в данном случае 5000 миллисекунд или 5 секунд).
         // Он используется для ожидания появления всплывающего окна.
         return wait.until(ExpectedConditions.alertIsPresent()); // ExpectedConditions.alertIsPresent() указывает,

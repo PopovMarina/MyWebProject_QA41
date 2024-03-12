@@ -6,6 +6,7 @@ import io.qameta.allure.Allure;
 import jdk.jfr.Description;
 import model.Contact;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -61,4 +62,22 @@ public class PhoneBookTest extends BaseTest {
         Thread.sleep(3000);
 
     }
+    @Test
+    @Description("Successful Registration")
+    public void successfulRegistration(){
+        Allure.description("Successful Registration test.");
+        MainPage mainPage = new MainPage(getDriver());
+        Allure.step("Open LOGIN menu");
+        LoginPage lpage = mainPage.openTopMenu(TopMenuItem.LOGIN.toString());
+        lpage.fillEmailField(EmailGenerator.generateEmail(5,5,3))
+                .fillPasswordField(PasswordStringGenerator.generateString());
+        Alert alert =  lpage.clickByRegistartionBUtton();
+        if (alert==null){
+            ContactsPage contactsPage = new ContactsPage(getDriver());
+            Assert.assertTrue( contactsPage. isElementPersist(getDriver()
+                    .findElement(By.xpath("//button[contains(text(),'Sign Out')]"))));
+        }else {
+            TakeScreen.takeScreenshot("Successful Registration");}
+    }
+
 }

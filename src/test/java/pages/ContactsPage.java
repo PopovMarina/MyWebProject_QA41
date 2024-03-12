@@ -21,7 +21,9 @@ public class ContactsPage extends  BasePage{
         setDriver(driver);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
     }
-
+    public boolean isElementPersist(WebElement element){
+        return isElementPresent(element);
+    }
     /**
      * Этот метод предназначен для получения данных о контакте из списка контактов
      * на веб-странице и сравнения полученных данных с данными переданным объектом Contact.
