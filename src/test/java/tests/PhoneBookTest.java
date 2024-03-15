@@ -16,6 +16,8 @@ import pages.ContactsPage;
 import pages.LoginPage;
 import pages.MainPage;
 
+import java.io.IOException;
+
 public class PhoneBookTest extends BaseTest {
 
     @Test(description = "The test checks the empty field warning declaration.")
@@ -79,5 +81,45 @@ public class PhoneBookTest extends BaseTest {
         }else {
             TakeScreen.takeScreenshot("Successful Registration");}
     }
+    @Test
+    public void deleteContact() throws InterruptedException {
+        Allure.description("User already exist. Delete contact by phone number!");
+        MainPage mainPage = new MainPage(getDriver());
+        Allure.step("Step 1");
+        LoginPage lpage = mainPage.openTopMenu(TopMenuItem.LOGIN.toString());
+        Allure.step("Step 2");
+        lpage.fillEmailField(PropertiesReader.getProperty("existingUserEmail"))
+                .fillPasswordField(PropertiesReader.getProperty("existingUserPassword"))
+                .clickByLoginButton();
+        ContactsPage contactsPage = new ContactsPage(getDriver());
+        Assert.assertNotEquals(contactsPage.deleteContactByPhoneNumberOrName("2101225254138"),
+                contactsPage.getContactsListSize(),"Contact lists are different");
+
+    }
+
+    @Test
+    public void deleteContactApproachTwo() throws IOException {
+        String filename = "contactDataFile.ser";
+        MainPage mainPage = new MainPage(getDriver());
+        LoginPage lpage = mainPage.openTopMenu(TopMenuItem.LOGIN.toString());
+        lpage.fillEmailField(PropertiesReader.getProperty("existingUserEmail"))
+                .fillPasswordField(PropertiesReader.getProperty("existingUserPassword"))
+                .clickByLoginButton();
+        MainPage.openTopMenu(TopMenuItem.ADD.toString());
+        AddPage addPage = new AddPage(getDriver());
+        Contact newContact = new Contact(NameAndLastNameGenerator.generateName(),NameAndLastNameGenerator.generateLastName(),
+                PhoneNumberGenerator.generatePhoneNumber(),
+                EmailGenerator.generateEmail(10,5,3),
+                AddressGenerator.generateAddress(), "Test description");
+        addPage.fillFormAndSave(newContact);
+        Contact.serializeContact(newContact, filename);
+        ContactsPage contactsPage = new ContactsPage(getDriver());
+        Contact deserContact = Contact.desiarializeContact(filename);
+        Assert.assertNotEquals(contactsPage.deleteContactByPhoneNumberOrName(deserContact.getPhone()),
+                contactsPage.getContactsListSize());
+
+    }
+
+
 
 }
