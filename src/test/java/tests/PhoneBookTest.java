@@ -34,7 +34,6 @@ public class PhoneBookTest extends BaseTest {
       Alert alert= loginPage.fillEmailField("myemail@mail.com").clickByRegistartionBUtton();
         boolean isAlertHandled = AlertHandler.handleAlert(alert, expectedString);
         Assert.assertTrue(isAlertHandled);
-
     }
     @Test
     @Description("User already exist. Login and add contact.")
@@ -62,7 +61,6 @@ public class PhoneBookTest extends BaseTest {
         Assert.assertTrue(contactsPage.getDataFromContactList(newContact));
         TakeScreen.takeScreenshot("screen");
         Thread.sleep(3000);
-
     }
     @Test
     @Description("Successful Registration")
@@ -94,7 +92,6 @@ public class PhoneBookTest extends BaseTest {
         ContactsPage contactsPage = new ContactsPage(getDriver());
         Assert.assertNotEquals(contactsPage.deleteContactByPhoneNumberOrName("2101225254138"),
                 contactsPage.getContactsListSize(),"Contact lists are different");
-
     }
 
     @Test
@@ -117,7 +114,6 @@ public class PhoneBookTest extends BaseTest {
         Contact deserContact = Contact.desiarializeContact(filename);
         Assert.assertNotEquals(contactsPage.deleteContactByPhoneNumberOrName(deserContact.getPhone()),
                 contactsPage.getContactsListSize());
-
     }
 
 
