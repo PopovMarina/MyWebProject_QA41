@@ -29,7 +29,7 @@ public class ContactsPage extends  BasePage{
         try {
         for (WebElement contact : contactsList) {
             WebElement phoneNumberData = contact.findElement(By
-                    .xpath("(//h2[text(),'" + phoneNumberOrName + "']) | (//h3[text()='"+phoneNumberOrName+"'])"));
+                    .xpath("//h2[text()='"+phoneNumberOrName+"'] | //h3[text()='"+phoneNumberOrName+"']"));
             if (phoneNumberData.isDisplayed()) {
                 phoneNumberData.click();
                 clickRemoveButton();
