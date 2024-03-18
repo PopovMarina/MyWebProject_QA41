@@ -1,4 +1,4 @@
-/*
+
 package tests;
 
 import org.testng.Assert;
@@ -28,7 +28,7 @@ public class AssertionTest {
     public static int myTest(){
         return 10/0;
     }
- */
+
 /*   @Test
     public void failTest(){
         int actualResult = someFunction();
@@ -58,6 +58,6 @@ public class AssertionTest {
         });
     }
 
-
-}
 */
+}
+
