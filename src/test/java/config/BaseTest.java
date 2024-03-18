@@ -50,7 +50,7 @@ public class BaseTest { // Эта строка объявляет начало �
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--lang=en");
-            // options.addArguments("--headless");
+             options.addArguments("--headless");
             driverThreadLocal.set(new ChromeDriver(options));
         }
         // Аналогично предыдущему блоку, но если browser равен "firefox",
@@ -59,7 +59,7 @@ public class BaseTest { // Эта строка объявляет начало �
             WebDriverManager.firefoxdriver().setup();
             FirefoxOptions options = new FirefoxOptions();
             options.addPreference("intl.accept_languages", "en");
-            // options.addArguments("-headless");
+             options.addArguments("-headless");
             driverThreadLocal.set(new FirefoxDriver(options));
         }
         /*else if (browser.equalsIgnoreCase("safari")) {

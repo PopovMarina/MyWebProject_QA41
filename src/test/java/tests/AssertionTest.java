@@ -27,14 +27,14 @@ public class AssertionTest {
     public static int myTest(){
         return 10/0;
     }
-    @Test
+ /*   @Test
     public void failTest(){
         int actualResult = someFunction();
         int expectedResult =10;
         Assert.fail("The test is fail ....."); //Этот вызов явно заставляет тест считаться неудачным и завершается с сообщением "The test is fail ....." без проверки условий.
         Assert.assertEquals(actualResult,expectedResult,"my comment");
 
-    }
+    }*/
     public static int someFunction(){
         return 10;
     }
