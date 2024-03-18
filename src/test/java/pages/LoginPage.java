@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -38,7 +37,7 @@ public LoginPage fillEmailField(String email){ // Этот метод запол
     return  this;  // Затем метод возвращает объект LoginPage, что позволяет использовать этот метод в цепочке вызовов
 }
 
-public Alert clickByRegistartionBUtton(){ // Этот метод кликает по кнопке регистрации на веб-странице.
+public Alert clickByRegistartionButton(){ // Этот метод кликает по кнопке регистрации на веб-странице.
         // Он вызывает метод click() для registrationButton.
         registrationButton.click();
         return getAlertIfPresent(); // Затем он также возвращает объект LoginPage, чтобы этот метод также можно было использовать в цепочке вызовов.
