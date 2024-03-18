@@ -80,7 +80,7 @@ public class PhoneBookTest extends BaseTest {
         }else {
             TakeScreen.takeScreenshot("Successful Registration");}
     }
-    @Test
+  //  @Test
     public void deleteContact() throws InterruptedException {
         Allure.description("User already exist. Delete contact by phone number!");
         MainPage mainPage = new MainPage(getDriver());

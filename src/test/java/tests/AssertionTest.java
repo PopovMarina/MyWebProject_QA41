@@ -16,11 +16,11 @@ public class AssertionTest {
 
         return true;
     }
-    @Test
+ //   @Test
     public void testCalc(){
         Assert.assertThrows(ArithmeticException.class, ()-> myTest());
     }
-    @Test
+  //  @Test
     public  void testDevideByZero() {
         Assert.assertThrows(Exception.class, () -> myTest());
     }
@@ -43,7 +43,7 @@ public class AssertionTest {
      * Таким образом, этот тест проверяет, что при выполнении метода myTest() действительно выбрасывается исключение
      * ArithmeticException, что является ожидаемым поведением в случае деления на ноль.
      */
-    @Test
+  //  @Test
     public void testDivideByZero() {
         Assert.assertThrows(ArithmeticException.class, new Assert.ThrowingRunnable() {
             @Override

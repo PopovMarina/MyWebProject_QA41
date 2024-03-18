@@ -95,7 +95,7 @@ public class WindowAndTabTests {
 
         Actions actions = new Actions(driver);
         actions.dragAndDrop(elementToDrop, targetElement).build().perform();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         driver.quit();
 
     }
