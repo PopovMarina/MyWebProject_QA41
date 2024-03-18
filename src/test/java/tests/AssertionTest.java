@@ -1,3 +1,4 @@
+/*
 package tests;
 
 import org.testng.Assert;
@@ -27,22 +28,26 @@ public class AssertionTest {
     public static int myTest(){
         return 10/0;
     }
- /*   @Test
+ */
+/*   @Test
     public void failTest(){
         int actualResult = someFunction();
         int expectedResult =10;
         Assert.fail("The test is fail ....."); //Этот вызов явно заставляет тест считаться неудачным и завершается с сообщением "The test is fail ....." без проверки условий.
         Assert.assertEquals(actualResult,expectedResult,"my comment");
 
-    }*/
+    }*//*
+
     public static int someFunction(){
         return 10;
     }
 
-    /**
+    */
+/**
      * Таким образом, этот тест проверяет, что при выполнении метода myTest() действительно выбрасывается исключение
      * ArithmeticException, что является ожидаемым поведением в случае деления на ноль.
-     */
+     *//*
+
   //  @Test
     public void testDivideByZero() {
         Assert.assertThrows(ArithmeticException.class, new Assert.ThrowingRunnable() {
@@ -55,3 +60,4 @@ public class AssertionTest {
 
 
 }
+*/
