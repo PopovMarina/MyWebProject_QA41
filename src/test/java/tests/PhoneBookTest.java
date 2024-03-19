@@ -119,34 +119,33 @@ public class PhoneBookTest extends BaseTest {
 
     @Test
     @Description("Registration attempt test.")
-    public void reRegistrationAttempt() throws InterruptedException {
-        Allure.description(" Registration attempt test.");
+    public void reRegistrationAttempt() {
+        boolean res = false;
+        Allure.description("Registration attempt test.");
         MainPage mainPage = new MainPage(getDriver());
         Allure.step("Open LOGIN menu");
         LoginPage lpage = mainPage.openTopMenu(TopMenuItem.LOGIN.toString());
 
-        User user = new User(EmailGenerator.generateEmail(7,7,3), PasswordStringGenerator.generateString());
+        User user = new User(EmailGenerator
+                .generateEmail(7, 7, 3), PasswordStringGenerator.generateString());
+
+        //System.out.println("USER_MAIL : "+user.getUserEmail() + " PASS: " +user.getUserPassword());
         lpage.fillEmailField(user.getUserEmail())
                 .fillPasswordField(user.getUserPassword());
-
-        Alert alert =  lpage.clickByRegistartionButton();
-
-        if (alert==null){
-
+        Alert alert = lpage.clickByRegistartionButton();
+        if (alert == null) {
             ContactsPage contactsPage = new ContactsPage(getDriver());
-
-           lpage = contactsPage.clickBySignOutButton();
-           Alert alert1= lpage.fillEmailField(user.getUserEmail())
-                   .fillPasswordField(user.getUserPassword()).clickByRegistartionButton();
-            //Thread.sleep(3000);
-        if (alert1!=null){
-            boolean res = AlertHandler.handleAlert(alert1, "exist");
-            System.out.println("RESULT "+res);
-            Assert.assertTrue(res);
+            lpage = contactsPage.clickBySignOutButton();
+            Alert alert1 = lpage.fillEmailField(user.getUserEmail())
+                    .fillPasswordField(user.getUserPassword()).clickByRegistartionButton();
+            if (alert1 != null) {
+                res = AlertHandler.handleAlert(alert1, "exist");
+            }
+        } else {
+            System.out.println("reRegistrationAttempt");
         }
-
-        }else {
-            TakeScreen.takeScreenshot("reRegistrationAttempt");}
+        Assert.assertTrue(res, "Registration attempt failed");
     }
+
 
 }
