@@ -119,7 +119,7 @@ public class PhoneBookTest extends BaseTest {
 
     @Test
     @Description("Registration attempt test.")
-    public void reRegistrationAttempt(){
+    public void reRegistrationAttempt() throws InterruptedException {
         Allure.description(" Registration attempt test.");
         MainPage mainPage = new MainPage(getDriver());
         Allure.step("Open LOGIN menu");
@@ -132,12 +132,15 @@ public class PhoneBookTest extends BaseTest {
         Alert alert =  lpage.clickByRegistartionButton();
 
         if (alert==null){
+
             ContactsPage contactsPage = new ContactsPage(getDriver());
+
            lpage = contactsPage.clickBySignOutButton();
            Alert alert1= lpage.fillEmailField(user.getUserEmail())
                    .fillPasswordField(user.getUserPassword()).clickByRegistartionButton();
+            //Thread.sleep(3000);
         if (alert1!=null){
-            boolean res = AlertHandler.handleAlert(alert1, "User already exist");
+            boolean res = AlertHandler.handleAlert(alert1, "exist");
             System.out.println("RESULT "+res);
             Assert.assertTrue(res);
         }
