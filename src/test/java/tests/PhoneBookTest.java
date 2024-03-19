@@ -125,7 +125,7 @@ public class PhoneBookTest extends BaseTest {
         Allure.step("Open LOGIN menu");
         LoginPage lpage = mainPage.openTopMenu(TopMenuItem.LOGIN.toString());
 
-        User user = new User(EmailGenerator.generateEmail(7,5,3), PasswordStringGenerator.generateString());
+        User user = new User(EmailGenerator.generateEmail(7,7,3), PasswordStringGenerator.generateString());
         lpage.fillEmailField(user.getUserEmail())
                 .fillPasswordField(user.getUserPassword());
 
@@ -134,14 +134,16 @@ public class PhoneBookTest extends BaseTest {
         if (alert==null){
             ContactsPage contactsPage = new ContactsPage(getDriver());
            lpage = contactsPage.clickBySignOutButton();
-           Alert alert1= lpage.fillEmailField(user.getUserEmail()).fillPasswordField(user.getUserPassword()).clickByRegistartionButton();
+           Alert alert1= lpage.fillEmailField(user.getUserEmail())
+                   .fillPasswordField(user.getUserPassword()).clickByRegistartionButton();
         if (alert1!=null){
             boolean res = AlertHandler.handleAlert(alert1, "User already exist");
+            System.out.println("RESULT "+res);
             Assert.assertTrue(res);
         }
 
         }else {
-            TakeScreen.takeScreenshot("Successful Registration");}
+            TakeScreen.takeScreenshot("reRegistrationAttempt");}
     }
 
 }
