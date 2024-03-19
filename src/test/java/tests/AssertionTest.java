@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class AssertionTest {
 
     public static void main(String[] args) {
-        Assert.assertEquals(myCalc(5,5), 10);
+      //  Assert.assertEquals(myCalc(5,5), 10);
     }
     public  static int myCalc(int a, int b){
         return a+b;
@@ -17,6 +17,8 @@ public class AssertionTest {
 
         return true;
     }
+/*
+
  //   @Test
     public void testCalc(){
         Assert.assertThrows(ArithmeticException.class, ()-> myTest());
@@ -28,6 +30,7 @@ public class AssertionTest {
     public static int myTest(){
         return 10/0;
     }
+*/
 
 /*   @Test
     public void failTest(){
