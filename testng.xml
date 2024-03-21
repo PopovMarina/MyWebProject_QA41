@@ -6,7 +6,7 @@
         <classes>
             <class name="tests.PhoneBookTest">
                 <methods>
-                    <include name="deleteContactApproachTwo"/>
+
                     <include name="loginOfAnExistingUserAddContact"/>
                 </methods>
             </class>
@@ -18,7 +18,7 @@
 
             <class name="tests.PhoneBookTest">
                 <methods>
-                    <include name="deleteContactApproachTwo"/>
+                    <include name="loginOfAnExistingUserAddContact"/>
                 </methods>
             </class>
         </classes>

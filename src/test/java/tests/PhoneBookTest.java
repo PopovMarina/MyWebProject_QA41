@@ -21,7 +21,7 @@ import java.io.IOException;
 
 public class PhoneBookTest extends BaseTest {
 
-    @Test(description = "The test checks the empty field warning declaration.")
+    @Test(description = "The test checks the empty field warning declaration.", retryAnalyzer = RetryAnalizer.class)
     @Parameters("browser")
     public void registrationWithoutPassword(@Optional("chrome") String browser) throws InterruptedException {
         Allure.description("User already exist. Login and add contact.!");
@@ -36,7 +36,7 @@ public class PhoneBookTest extends BaseTest {
         boolean isAlertHandled = AlertHandler.handleAlert(alert, expectedString);
         Assert.assertTrue(isAlertHandled);
     }
-    @Test
+    @Test(retryAnalyzer = RetryAnalizer.class)
     @Description("User already exist. Login and add contact.")
     public void loginOfAnExistingUserAddContact() throws InterruptedException {
         Allure.description("User already exist. Login and add contact.!");
@@ -129,7 +129,6 @@ public class PhoneBookTest extends BaseTest {
         User user = new User(EmailGenerator
                 .generateEmail(7, 7, 3), PasswordStringGenerator.generateString());
 
-        //System.out.println("USER_MAIL : "+user.getUserEmail() + " PASS: " +user.getUserPassword());
         lpage.fillEmailField(user.getUserEmail())
                 .fillPasswordField(user.getUserPassword());
         Alert alert = lpage.clickByRegistartionButton();
